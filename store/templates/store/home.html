@@ -1,0 +1,24 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<br/>
+<div class="card-columns">
+  {% for cat in categories %}
+  {% if cat.0 %}
+  <div class="card">
+    <div class="card-header">
+      {{ cat.0 }}
+    </div>
+    <div class="card-block">
+      {% for scat in cat.1 %}
+      <a href="{% url 'productlist' category=scat.0 %}" class="card-link">{{ scat.1 }}</a>
+      {% endfor %}
+    </div>
+    <div class="card-footer text-muted">
+       <a href="{% url 'productlist' category=cat.0 %}" class="card-link">See all</a>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

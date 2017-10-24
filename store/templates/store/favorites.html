@@ -1,0 +1,21 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Favorites for {{ user.username }}</h1>
+<div class="card-columns">
+  {% for product in products %}
+  <div class="card" >
+    <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">{{ product.productname }}</h4>
+      <p class="card-text">Description: {{ product.desc }}</p>
+      <p class="card-text">Producer: {{ product.get_producer_display }}</p>
+      <p class="card-text">Price: ${{ product.price }}</p>
+    </div>
+    <div class="card-footer">
+      <a href="{% url 'productview' pk=product.pk %}" class="btn">See details</a>
+      <a href="{% url 'like' url=request.path|urlencode %}?pk={{ product.pk }}" class="btn">Remove from favorites</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

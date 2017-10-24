@@ -1,0 +1,33 @@
+<form action="" >
+  <div class="form-group">
+    <label for="from">от</label>
+    <input name="pr1" type="text" id="fromprice" size="4" >
+    <label for="toprice">to</label>
+    <input name="pr2" type="text" id="toprice" size="4">
+  </div>
+  <div class="form-group">
+    <input type="submit" class="btn" value="Показать">
+  </div>
+</form>
+<div class="filters">
+  {% if category %}
+  Категория: <br/>
+  {% for cat in categories %}
+  {% if cat.0 == category  %}
+    {% for c in cat.1 %}
+      <a href="{% url 'productlist' category=c.0 %}" class="card-link">{{ c.1 }}</a>
+    {% endfor %}
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+</div>
+<div class="filters">
+  Производитель: <br/>
+  {% for producer in producers %}
+  {% if subcategory %}
+  <a href="{% url 'productlist' category=subcategory producer=producer.0 %}" class="card-link">{{ producer.1 }}</a>
+  {% elif category %}
+  <a href="{% url 'productlist' category=category producer=producer.0 %}" class="card-link">{{ producer.1 }}</a>
+  {% endif %}
+  {% endfor %}
+</div>

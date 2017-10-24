@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}
+
+
+{% block content %}
+<h1>Add new product to list</h1>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+    <div class="form-group">
+      <table>
+      {{ form }}
+      </table>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn" name="create">
+    </div>
+</form>
+{% endblock content %}

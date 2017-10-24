@@ -1,0 +1,16 @@
+<br/>
+<div class="card" style="width: 100%;">
+  <div class="card-header">{{ product.productname }}</div>
+  <div class="row">
+  <div class="col-md-6">
+    <img class="card-img-left" src="{{ product.image.url }}" alt="Card image cap">
+  </div>
+  <div class="card-block">
+    <p class="card-text">Description: {{ product.desc }}</p>
+    <p class="card-text">Price: ${{ product.price }}</p>
+    <p class="card-text">Producer: {{ product.get_producer_display }}</p>
+    <p class="card-text">{% if product.available %}Available{% else %}Not available{% endif %}</p>
+    {% if user.is_authenticated %}<p class="card-text"><a href="{% url 'like' url=request.path|urlencode %}?pk={{ product.pk }}" class="btn">{{ liked }}</a></p>{% endif %}
+  </div>
+</div>
+</div>

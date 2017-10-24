@@ -1,0 +1,24 @@
+{% load static %}
+{% for product in products %}
+  <div class="card">
+          <div class="card-header">
+            {{ product.productname }}
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <img class="card-img-left" src="{{ product.image.url }}" alt="Card image cap">
+            </div>
+            <div class="col-md-6">
+              <div class="card-block">
+                <p class="card-text">Description: {{ product.desc }}</p>
+                <p class="card-text">Producer: {{ product.get_producer_display }}</p>
+                <p class="card-text">Price: ${{ product.price }}</p>
+                <a href="{% url 'productview' pk=product.pk %}" class="btn">See details</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'like' url=request.path|urlencode %}?pk={{ product.pk }}" class="btn">Like</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+      </div>
+{% endfor %}

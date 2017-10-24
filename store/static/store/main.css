@@ -1,0 +1,32 @@
+.footer-block {
+  display: inline-block;
+  margin: 5px;
+}
+
+.footer-main {
+  background-color: lightgray;
+}
+
+.card-img-left {
+  border-bottom-left-radius: calc(.25rem - 1px);
+  border-top-left-radius: calc(.25rem - 1px);
+  float: left;
+  padding-right: 1em;
+  margin-bottom: -1.25em;
+}
+
+.filter-block {
+  float: left;
+  width: 200px;
+  height: 400px;
+  border-radius: 1px;
+  border-color: black;
+}
+
+.left-content {
+  margin-left: 220px;
+}
+
+.card-link {
+  text-indent: 2%;
+}

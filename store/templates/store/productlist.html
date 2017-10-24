@@ -1,0 +1,12 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>{% firstof subcatname category %} </h1>
+<div class="row">
+  <div class="col"  >
+    {% include 'store/_filter_area.html' %}
+  </div>
+  <div class="col-10">
+    {% include 'store/_product_list.html' %}
+  </div>
+</div>
+{% endblock content %}
